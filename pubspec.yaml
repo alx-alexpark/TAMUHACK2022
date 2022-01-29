@@ -65,7 +65,7 @@ flutter:
   fonts:
     - family: Geometria
       fonts:
-        - asset: assets/fonts/Geometria-Regular.ttf
+        - asset: assets/fonts/Geometria.ttf
         - asset: assets/fonts/Geometria-Italic.ttf
           style: italic
         - asset: assets/fonts/Geometria-Bold.ttf
