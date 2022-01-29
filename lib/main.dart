@@ -50,6 +50,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
   int _counter = 0;
 
   void _incrementCounter() {
