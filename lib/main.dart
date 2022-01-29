@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tamuhack2022/pages/login.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() {
   runApp(const LoginScreen());
