@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "212395014790",
+    "project_id": "tamuhack-2022",
+    "storage_bucket": "tamuhack-2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212395014790:android:b78fb85d7d389f37aa6f07",
+        "android_client_info": {
+          "package_name": "com.company.tamuhack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212395014790-errlt03o9kamu09lte2idkh6l2rjui9o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXfgTcXdFdE8ncZc7yCEoo90ZzXPWtAwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212395014790-errlt03o9kamu09lte2idkh6l2rjui9o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
