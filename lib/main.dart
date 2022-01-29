@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tamuhack2022/pages/login.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const LoginScreen());
 }
 
 class MyApp extends StatelessWidget {
