@@ -25,76 +25,86 @@ class PilotSignupScreen extends StatelessWidget {
         .catchError((error) => print("Failed to apply pilot: $error"));
     }
 
-    return Scaffold(
-      body: Padding( 
-        padding: EdgeInsets.all(50),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                CircleAvatar(),
-                Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Text(
-                    "First Lastname",
+    return FutureBuilder(
+      future: users.doc(user?.uid).get(), 
+      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+          return Scaffold(
+            body: Padding( 
+              padding: EdgeInsets.all(50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      CircleAvatar(),
+                      Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          "First Lastname",
+                          style: TextStyle(
+                            fontSize: 30,
+                          )
+                        )
+                      )
+                    ]
+                  ),
+                  SizedBox(height: 80),
+                  Text(
+                    "Apply to be a pilot",
                     style: TextStyle(
-                      fontSize: 30,
-                    )
-                  )
-                )
-              ]
-            ),
-            SizedBox(height: 80),
-            Text(
-              "Apply to be a pilot",
-              style: TextStyle(
-                fontSize: 60,
-                // fontFamily: "Geometria-Medium"
-              ),
-            ),
-            SizedBox(height: 80),
-            Text(
-              "Upload your license",
-              style: TextStyle(
-                fontSize: 20
-              )
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Container(
-                width: 275,
-                height: 200,
-                color: const Color(0xFFB49EF3),
-                child: MaterialButton(
-                  onPressed: (){
-
-                  },
-                  child: const Center(
-                    child: Icon(
-                      Icons.upload,
-                      size: 40
+                      fontSize: 60,
+                      // fontFamily: "Geometria-Medium"
+                    ),
+                  ),
+                  SizedBox(height: 80),
+                  Text(
+                    "Upload your license",
+                    style: TextStyle(
+                      fontSize: 20
                     )
                   ),
-                ),
-              )
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: MaterialButton(
-                onPressed: applyPilot,
-                child: Text(
-                  "Submit",
-                  style: TextStyle(
-                    fontSize: 30
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Container(
+                      width: 275,
+                      height: 200,
+                      color: const Color(0xFFB49EF3),
+                      child: MaterialButton(
+                        onPressed: (){
+
+                        },
+                        child: const Center(
+                          child: Icon(
+                            Icons.upload,
+                            size: 40
+                          )
+                        ),
+                      ),
+                    )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: MaterialButton(
+                      onPressed: applyPilot,
+                      child: Text(
+                        "Submit",
+                        style: TextStyle(
+                          fontSize: 30
+                        )
+                      ),
+                      color: Color(0xFF5F4AD8)
+                    ),
                   )
-                ),
-                color: Color(0xFF5F4AD8)
-              ),
+                ]
+              )
             )
-          ]
-        )
-      )
+          );
+        } else {
+          return CircularProgressIndicator();
+        }
+      }
     );
   }
 }
