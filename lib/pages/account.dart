@@ -8,21 +8,18 @@ class AccountScreen extends StatelessWidget {
   const AccountScreen({Key? key}) : super(key: key);
 
   Widget settingsItem(Widget screen, String text, BuildContext context) {
-    return (
-      TextButton(
-        style: ButtonStyle(
-          alignment: Alignment.centerLeft,
-        ),
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
-        },
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 35
-          )
-        )
-      )
+    return TextButton(
+      style: ButtonStyle(
+        alignment: Alignment.centerLeft,
+      ),
+      onPressed: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => screen));
+      },
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 35),
+      ),
     );
   }
 
@@ -35,22 +32,28 @@ class AccountScreen extends StatelessWidget {
           children: [
             Text(
               "Account Settings",
-              style: TextStyle(
-                fontSize: 50
-              ),
+              style: TextStyle(fontSize: 50),
             ),
             ListView(
               shrinkWrap: true,
               padding: const EdgeInsets.all(20.0),
               children: [
-                settingsItem(DashboardScreen(), "Change Username", context),
+                settingsItem(
+                  DashboardScreen(),
+                  "Change Username",
+                  context,
+                ),
                 Divider(),
-                settingsItem(PilotSignupScreen(), "Sign up to be a pilot", context)
+                settingsItem(
+                  PilotSignupScreen(),
+                  "Sign up to be a pilot",
+                  context,
+                )
               ],
             )
           ],
         ),
-      )
+      ),
     );
   }
 }

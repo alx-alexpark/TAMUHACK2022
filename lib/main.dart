@@ -30,9 +30,9 @@ class App extends StatefulWidget {
         fontFamily: "Geometria-Medium",
       ),
       home: const LoginScreen(),
-      
     );
   }
+
   _AppState createState() => _AppState();
 }
 
@@ -54,7 +54,7 @@ class _AppState extends State<App> {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(fontFamily: "Geometria"),
-            home: Scaffold(
+            home: const Scaffold(
               body: LoginScreen(),
             ),
           );

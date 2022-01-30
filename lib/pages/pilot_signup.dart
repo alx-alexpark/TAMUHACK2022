@@ -14,19 +14,16 @@ class PilotSignupScreen extends StatelessWidget {
     Future<void> applyPilot() {
       // Call the user's CollectionReference to add a new user
       return users
-        .doc(user?.uid)
-        .set({
-          'pilot_info':{
-            'approved': true,
-            'license_image': "no"
-          }
-        }, SetOptions(merge: true))
-        .then((value) => print("Applied for pilot"))
-        .catchError((error) => print("Failed to apply pilot: $error"));
+          .doc(user?.uid)
+          .set({
+            'pilot_info': {'approved': true, 'license_image': "no"}
+          }, SetOptions(merge: true))
+          .then((value) => print("Applied for pilot"))
+          .catchError((error) => print("Failed to apply pilot: $error"));
     }
 
     return Scaffold(
-      body: Padding( 
+      body: Padding(
         padding: EdgeInsets.all(50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,10 +37,10 @@ class PilotSignupScreen extends StatelessWidget {
                     "First Lastname",
                     style: TextStyle(
                       fontSize: 30,
-                    )
-                  )
-                )
-              ]
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 80),
             Text(
@@ -54,12 +51,7 @@ class PilotSignupScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 80),
-            Text(
-              "Upload your license",
-              style: TextStyle(
-                fontSize: 20
-              )
-            ),
+            Text("Upload your license", style: TextStyle(fontSize: 20)),
             ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Container(
@@ -67,34 +59,22 @@ class PilotSignupScreen extends StatelessWidget {
                 height: 200,
                 color: const Color(0xFFB49EF3),
                 child: MaterialButton(
-                  onPressed: (){
-
-                  },
-                  child: const Center(
-                    child: Icon(
-                      Icons.upload,
-                      size: 40
-                    )
-                  ),
+                  onPressed: () {},
+                  child: const Center(child: Icon(Icons.upload, size: 40)),
                 ),
-              )
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child: MaterialButton(
                 onPressed: applyPilot,
-                child: Text(
-                  "Submit",
-                  style: TextStyle(
-                    fontSize: 30
-                  )
-                ),
-                color: Color(0xFF5F4AD8)
+                child: Text("Submit", style: TextStyle(fontSize: 30)),
+                color: Color(0xFF5F4AD8),
               ),
-            )
-          ]
-        )
-      )
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
