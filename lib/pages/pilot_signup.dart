@@ -9,6 +9,8 @@ class PilotSignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     User? user = FirebaseAuth.instance.currentUser;
     Future<void> applyPilot() {
@@ -35,23 +37,32 @@ class PilotSignupScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: 20),
                   child: Text(
                     "First Lastname",
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 80),
+            SizedBox(
+              height: size.height * 0.08,
+            ),
             Text(
               "Apply to be a pilot",
               style: TextStyle(
-                fontSize: 60,
+                fontSize: 45, fontWeight: FontWeight.w500,
                 // fontFamily: "Geometria-Medium"
               ),
             ),
-            SizedBox(height: 80),
-            Text("Upload your license", style: TextStyle(fontSize: 20)),
+            SizedBox(height: size.height * 0.05),
+            Text(
+              "Upload your license",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Container(
@@ -66,12 +77,21 @@ class PilotSignupScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 30),
-              child: MaterialButton(
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.all(10.0),
+                  backgroundColor: Color(0xFF5F4AD8),
+                  primary: Colors.white,
+                  textStyle: TextStyle(
+                    fontFamily: "Geometria",
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
                 onPressed: applyPilot,
-                child: Text("Submit", style: TextStyle(fontSize: 30)),
-                color: Color(0xFF5F4AD8),
+                child: Text("Submit"),
               ),
-            ),
+            )
           ],
         ),
       ),

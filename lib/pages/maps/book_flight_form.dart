@@ -1,9 +1,13 @@
+import 'package:bottom_bar/bottom_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
     show CalendarCarousel;
+import 'package:tamuhack2022/pages/bottom_bar.dart';
 import 'dart:core';
+
+import 'package:tamuhack2022/pages/dashboard.dart';
 
 class BookFlightForm extends StatefulWidget {
   final Function onDepartTap;
@@ -12,16 +16,18 @@ class BookFlightForm extends StatefulWidget {
   final TextEditingController departInputController;
   final Function onDateChange;
   final Function onTimeChange;
+  final Future<void> Function() submit;
 
-  const BookFlightForm(
-      {Key? key,
-      required this.onDepartTap,
-      required this.onArrivalTap,
-      required this.arrivalInputController,
-      required this.departInputController,
-      required this.onDateChange,
-      required this.onTimeChange})
-      : super(key: key);
+  const BookFlightForm({
+    Key? key,
+    required this.onDepartTap,
+    required this.onArrivalTap,
+    required this.arrivalInputController,
+    required this.departInputController,
+    required this.onDateChange,
+    required this.onTimeChange,
+    required this.submit,
+  }) : super(key: key);
 
   @override
   _BookFlightFormState createState() => _BookFlightFormState();
@@ -158,10 +164,20 @@ class _BookFlightFormState extends State<BookFlightForm> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Booking Flight')),
+                    );
+                    await widget.submit();
+
+                    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BottomBarWidget(),
+                      ),
                     );
                   }
                 },

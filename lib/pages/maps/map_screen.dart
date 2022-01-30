@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:html';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -43,6 +45,23 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    CollectionReference flights =
+        FirebaseFirestore.instance.collection("flights");
+
+    Future<void> addFlight() async {
+      User? user = FirebaseAuth.instance.currentUser;
+      print(user);
+      if (user != Null) {
+        flights.add({
+          "arrival": arrivalInputController.value.text,
+          "departure": departInputController.value.text,
+          "fulfilled": false,
+          "passenger": FirebaseAuth.instance.currentUser!.uid,
+          "pilot": "",
+          "time": Timestamp.fromDate(fullDate)
+        });
+      }
+    }
 
     return Scaffold(
       body: SlidingUpPanel(
@@ -170,6 +189,9 @@ class _MapScreenState extends State<MapScreen> {
                         fullDate = DateTime(fullDate.year, fullDate.month,
                             fullDate.day, time.hour, time.minute);
                       });
+                    },
+                    submit: () async {
+                      return addFlight();
                     },
                   ),
                 ],
