@@ -11,7 +11,7 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   String departureText = "";
-  String arrivalalText = "";
+  String arrivalText = "";
   String dateText = "";
   GoogleMapController? googleMapController;
 
@@ -31,21 +31,41 @@ class _MapScreenState extends State<MapScreen> {
                 target: LatLng(0.0, 0.0),
               ),
             ),
-            // Container(
-            //   padding: const EdgeInsets.all(8.0),
-            //   decoration: BoxDecoration(
-            //     borderRadius: BorderRadius.all(
-            //       Radius.circular(10),
-            //     ),
-            //   ),
-            // ),
-            // TextField(
-            //   maxLines: 1,
-            //   style: TextStyle(
-            //     backgroundColor: Colors.white,
-            //     color: Colors.grey,
-            //   ),
-            // ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                      spreadRadius: 0.0,
+                    )
+                  ],
+                ),
+                child: const TextField(
+                  maxLines: 1,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Colors.grey,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: "Howdy! Where ya goin'?",
+                  ),
+                  style: TextStyle(
+                    backgroundColor: Colors.white,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
         panel: Column(
@@ -73,40 +93,60 @@ class _MapScreenState extends State<MapScreen> {
               height: 75,
               width: 75,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                const Text(
-                  "Depart",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(""),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                const Text(
-                  "Arrive",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(""),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                const Text(
-                  "Time",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(50),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      const Text(
+                        "Depart",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          departureText,
+                          style: const TextStyle(
+                            backgroundColor: Color(0x00B49EF3),
+                          ),
+                        ),
+                        // clipBehavior: ClipRRect(
+                        //   borderRadius: Border.all(10),
+                        // ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      const Text(
+                        "Arrive",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(arrivalText),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      const Text(
+                        "Time",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      // Replace with date picker
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(dateText),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
