@@ -59,6 +59,7 @@ class DashboardScreen extends StatelessWidget {
                           Container(
                             width: size.width,
                             height: size.height * 0.8,
+                            alignment: Alignment.topCenter,
                             decoration: BoxDecoration(
                               color: Color(0xFF5F4AD8),
                               borderRadius: BorderRadius.only(
@@ -66,6 +67,72 @@ class DashboardScreen extends StatelessWidget {
                                 topRight: Radius.circular(30),
                               ),
                             ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 45),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    child: Container(
+                                      color: Color(0xFF4C3BAD),
+                                      height: 100,
+                                      width: 100,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              "Miles",
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                color: Color(0xFFFFFFFF)
+                                              ),
+                                            ),
+                                            Text("400",
+                                              style: TextStyle(
+                                                fontSize: 35,
+                                                color: Color(0xFFFFFFFF)
+                                              )
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ),
+                                  ), 
+                                  SizedBox(width:20),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    child: Container(
+                                      color: Color(0xFF4C3BAD),
+                                      height: 100,
+                                      width: 100,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              "Flights",
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                color: Color(0xFFFFFFFF)
+                                              ),
+                                            ),
+                                            Text("4",
+                                              style: TextStyle(
+                                                fontSize: 35,
+                                                color: Color(0xFFFFFFFF)
+                                              )
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
                           ),
                           Positioned(
                             bottom: 0,
