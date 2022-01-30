@@ -1,9 +1,10 @@
+import 'package:bottom_bar/bottom_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
     show CalendarCarousel;
-import 'package:tamuhack2022/pages/bottombartest.dart';
+import 'package:tamuhack2022/pages/bottom_bar.dart';
 import 'dart:core';
 
 import 'package:tamuhack2022/pages/dashboard.dart';
@@ -175,7 +176,7 @@ class _BookFlightFormState extends State<BookFlightForm> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BottomBarTest(),
+                        builder: (context) => BottomBar(),
                       ),
                     );
                   }
