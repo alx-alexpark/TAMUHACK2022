@@ -23,39 +23,46 @@ class _MapScreenState extends State<MapScreen> {
 
     return Scaffold(
       body: SlidingUpPanel(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          ),
-          body: SizedBox(
-            height: 300,
-            width: 300,
-            child: GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: const CameraPosition(
-                target: LatLng(0.0, 0.0),
-              ),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+        body: SizedBox(
+          height: 300,
+          width: 300,
+          child: GoogleMap(
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: const CameraPosition(
+              target: LatLng(0.0, 0.0),
             ),
           ),
-          panel: ListView(
-            children: [
-              Container(
-                height: size.height * 0.1,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Book Flight",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
+        ),
+        panel: Column(
+          children: [
+            Container(
+              height: size.height * 0.1,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "Book Flight",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
                   ),
                 ),
               ),
-              BookFlightForm(),
-            ],
-          )),
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  BookFlightForm(),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
