@@ -66,10 +66,7 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       body: SlidingUpPanel(
         minHeight: 37,
-        maxHeight: MediaQuery.of(context).size.height -
-            (bottomBarKey.currentContext?.findRenderObject() as RenderBox)
-                .size
-                .height,
+        maxHeight: MediaQuery.of(context).size.height - 100,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),

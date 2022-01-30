@@ -8,8 +8,6 @@ import 'package:tamuhack2022/pages/maps/map_screen.dart';
 import 'package:tamuhack2022/pages/pilot/pilot_screen.dart';
 import 'package:tamuhack2022/pages/pilot_signup.dart';
 
-final GlobalKey bottomBarKey = GlobalKey();
-
 class BottomBarWidget extends StatefulWidget {
   const BottomBarWidget({Key? key}) : super(key: key);
 
@@ -63,7 +61,6 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
             },
           ),
           bottomNavigationBar: BottomBar(
-            key: bottomBarKey,
             selectedIndex: _currentPage,
             onTap: (index) {
               _pageController.jumpToPage(index);
