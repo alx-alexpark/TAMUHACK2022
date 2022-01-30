@@ -30,16 +30,18 @@ class PilotSignupScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(children: [
-              CircleAvatar(),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Text(
-                  "First Lastname",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            Row(
+              children: [
+                CircleAvatar(),
+                Padding(
+                  padding: EdgeInsets.only(left: 20),
+                  child: Text(
+                    "First Lastname",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  ),
                 ),
-              )
-            ]),
+              ],
+            ),
             SizedBox(
               height: size.height * 0.08,
             ),
@@ -62,16 +64,17 @@ class PilotSignupScreen extends StatelessWidget {
               height: 20,
             ),
             ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Container(
-                  width: 275,
-                  height: 200,
-                  color: const Color(0xFFB49EF3),
-                  child: MaterialButton(
-                    onPressed: () {},
-                    child: const Center(child: Icon(Icons.upload, size: 40)),
-                  ),
-                )),
+              borderRadius: BorderRadius.circular(15),
+              child: Container(
+                width: 275,
+                height: 200,
+                color: const Color(0xFFB49EF3),
+                child: MaterialButton(
+                  onPressed: () {},
+                  child: const Center(child: Icon(Icons.upload, size: 40)),
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child: TextButton(
