@@ -5,8 +5,8 @@ import 'package:bottom_bar/bottom_bar.dart';
 import 'package:tamuhack2022/pages/account.dart';
 import 'package:tamuhack2022/pages/dashboard.dart';
 import 'package:tamuhack2022/pages/maps/map_screen.dart';
+import 'package:tamuhack2022/pages/pilot/pilot_screen.dart';
 import 'package:tamuhack2022/pages/pilot_signup.dart';
-import 'package:tamuhack2022/pages/pilotdashboard.dart';
 
 class BottomBarTest extends StatefulWidget {
   const BottomBarTest({Key? key}) : super(key: key);
@@ -44,7 +44,7 @@ class _BottomBarTestState extends State<BottomBarTest> {
               DashboardScreen(),
               MapScreen(),
               //AccountScreen(),
-              data['pilot_info']['approved'] ? PilotDashboard() : PilotSignupScreen()
+              data['pilot_info']['approved'] ? PilotScreen() : PilotSignupScreen()
             ],
             onPageChanged: (index) {
               // Use a better state management solution
