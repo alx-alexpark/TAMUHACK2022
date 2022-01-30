@@ -176,7 +176,7 @@ class _BookFlightFormState extends State<BookFlightForm> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BottomBar(),
+                        builder: (context) => BottomBarWidget(),
                       ),
                     );
                   }
