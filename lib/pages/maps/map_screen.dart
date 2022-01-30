@@ -37,7 +37,7 @@ class _MapScreenState extends State<MapScreen> {
               ),
             ),
           ),
-          panel: Column(
+          panel: ListView(
             children: [
               Container(
                 height: size.height * 0.1,
