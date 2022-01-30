@@ -10,6 +10,9 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  String departureText = "";
+  String arrivalalText = "";
+  String dateText = "";
   GoogleMapController? googleMapController;
 
   void _onMapCreated(GoogleMapController controller) {
@@ -20,18 +23,96 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SlidingUpPanel(
-        body: SizedBox(
-          height: 300,
-          width: 300,
-          child: GoogleMap(
-            onMapCreated: _onMapCreated,
-            initialCameraPosition: const CameraPosition(
-              target: LatLng(0.0, 0.0),
+        body: Stack(
+          children: <Widget>[
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: const CameraPosition(
+                target: LatLng(0.0, 0.0),
+              ),
             ),
-          ),
+            // Container(
+            //   padding: const EdgeInsets.all(8.0),
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.all(
+            //       Radius.circular(10),
+            //     ),
+            //   ),
+            // ),
+            // TextField(
+            //   maxLines: 1,
+            //   style: TextStyle(
+            //     backgroundColor: Colors.white,
+            //     color: Colors.grey,
+            //   ),
+            // ),
+          ],
         ),
-        panel: const Center(
-          child: Text("hello"),
+        panel: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Container(
+                child: const SizedBox(
+                  height: 6,
+                  width: 100,
+                ),
+                decoration: const BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(5),
+                  ),
+                ),
+              ),
+            ),
+            const Text(
+              "Book Flight",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 75,
+              width: 75,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                const Text(
+                  "Depart",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(""),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                const Text(
+                  "Arrive",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(""),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                const Text(
+                  "Time",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ],
+        ),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
         ),
       ),
     );
