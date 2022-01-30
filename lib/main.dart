@@ -8,6 +8,7 @@ import 'package:tamuhack2022/pages/maps/map_screen.dart';
 import 'package:tamuhack2022/pages/pilot/pilot_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(App());
 }
 

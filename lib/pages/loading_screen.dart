@@ -58,7 +58,10 @@ class _LoadingScreenState extends State<LoadingScreen>
             ),
           ),
           // we need a loading widget
-          RotationTransition(turns: rotateAnimation, child: Text('test')),
+          RotationTransition(
+            turns: rotateAnimation,
+            child: Image.asset("assets/image/plane.png"),
+          ),
         ],
       ),
     );
