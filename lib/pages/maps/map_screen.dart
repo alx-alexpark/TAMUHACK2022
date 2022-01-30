@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tamuhack2022/pages/maps/book_flight_form.dart';
+import 'package:tamuhack2022/pages/maps/tx_coords.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -12,6 +15,11 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   GoogleMapController? googleMapController;
+  bool isArrival = true;
+  TextEditingController arrivalInputController =
+      TextEditingController(text: "");
+  TextEditingController departInputController = TextEditingController(text: "");
+  DateTime fullDate = DateTime.now();
 
   void _onMapCreated(GoogleMapController controller) {
     googleMapController = controller;
@@ -20,6 +28,8 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    print(fullDate);
+    var coords = jsonDecode(txCoords);
 
     return Scaffold(
       body: SlidingUpPanel(
@@ -31,6 +41,38 @@ class _MapScreenState extends State<MapScreen> {
           height: 300,
           width: 300,
           child: GoogleMap(
+            myLocationEnabled: false,
+            markers: (coords as List)
+                .map(
+                  (e) => Marker(
+                      onTap: () {
+                        if (isArrival) {
+                          arrivalInputController.value =
+                              arrivalInputController.value.copyWith(
+                            text: e['code'],
+                            selection: TextSelection(
+                                baseOffset: e['code'].length,
+                                extentOffset: e['code'].length),
+                            composing: TextRange.empty,
+                          );
+                        } else {
+                          departInputController.value =
+                              departInputController.value.copyWith(
+                            text: e['code'],
+                            selection: TextSelection(
+                                baseOffset: e['code'].length,
+                                extentOffset: e['code'].length),
+                            composing: TextRange.empty,
+                          );
+                        }
+                      },
+                      markerId: MarkerId(e['code']),
+                      infoWindow:
+                          InfoWindow(title: "${e['name']}-${e['code']}"),
+                      position: LatLng(
+                          double.parse(e['lat']), double.parse(e['lon']))),
+                )
+                .toSet(),
             onMapCreated: _onMapCreated,
             initialCameraPosition: const CameraPosition(
               target: LatLng(0.0, 0.0),
@@ -56,7 +98,31 @@ class _MapScreenState extends State<MapScreen> {
             Expanded(
               child: ListView(
                 children: [
-                  BookFlightForm(),
+                  BookFlightForm(
+                      arrivalInputController: arrivalInputController,
+                      departInputController: departInputController,
+                      onArrivalTap: () {
+                        setState(() {
+                          isArrival = true;
+                        });
+                      },
+                      onDepartTap: () {
+                        setState(() {
+                          isArrival = false;
+                        });
+                      },
+                      onDateChange: (DateTime date) {
+                        setState(() {
+                          fullDate = DateTime(date.year, date.month, date.day,
+                              fullDate.hour, fullDate.minute, 0);
+                        });
+                      },
+                      onTimeChange: (TimeOfDay time) {
+                        setState(() {
+                          fullDate = DateTime(fullDate.year, fullDate.month,
+                              fullDate.day, time.hour, time.minute);
+                        });
+                      }),
                 ],
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
@@ -5,7 +6,22 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
 import 'dart:core';
 
 class BookFlightForm extends StatefulWidget {
-  const BookFlightForm({Key? key}) : super(key: key);
+  final Function onDepartTap;
+  final Function onArrivalTap;
+  final TextEditingController arrivalInputController;
+  final TextEditingController departInputController;
+  final Function onDateChange;
+  final Function onTimeChange;
+
+  const BookFlightForm(
+      {Key? key,
+      required this.onDepartTap,
+      required this.onArrivalTap,
+      required this.arrivalInputController,
+      required this.departInputController,
+      required this.onDateChange,
+      required this.onTimeChange})
+      : super(key: key);
 
   @override
   _BookFlightFormState createState() => _BookFlightFormState();
@@ -14,7 +30,6 @@ class BookFlightForm extends StatefulWidget {
 class _BookFlightFormState extends State<BookFlightForm> {
   final _formKey = GlobalKey<FormState>();
   DateTime _currentDate = DateTime.now();
-
   String? _selectedTime;
 
   Future<void> _show() async {
@@ -23,13 +38,12 @@ class _BookFlightFormState extends State<BookFlightForm> {
         initialTime: TimeOfDay.now(),
         builder: (context, child) {
           return MediaQuery(
-              data: MediaQuery.of(context).copyWith(
-                  // Using 12-Hour format
-                  alwaysUse24HourFormat: false),
-              // If you want 24-Hour format, just change alwaysUse24HourFormat to true
+              data:
+                  MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
               child: child!);
         });
     if (result != null) {
+      widget.onTimeChange(result);
       setState(() {
         _selectedTime = result.format(context);
       });
@@ -39,17 +53,20 @@ class _BookFlightFormState extends State<BookFlightForm> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    print(_currentDate);
     return Form(
       key: _formKey,
       child: Column(
         children: [
           TextFormField(
+            controller: widget.departInputController,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               constraints: BoxConstraints(maxWidth: size.width * 0.9),
               labelText: 'Choose an departure airpot on the map',
             ),
+            onTap: () {
+              widget.onDepartTap();
+            },
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
@@ -57,25 +74,19 @@ class _BookFlightFormState extends State<BookFlightForm> {
               return null;
             },
           ),
-          TextFormField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              constraints: BoxConstraints(maxWidth: size.width * 0.9),
-              labelText: 'Choose an departure airpot on the map',
-            ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
+          SizedBox(
+            height: 20,
           ),
           TextFormField(
+            controller: widget.arrivalInputController,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               constraints: BoxConstraints(maxWidth: size.width * 0.9),
-              labelText: 'Choose an departure airpot on the map',
+              labelText: 'Choose an arrival airpot on the map',
             ),
+            onTap: () {
+              widget.onArrivalTap();
+            },
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
@@ -85,7 +96,10 @@ class _BookFlightFormState extends State<BookFlightForm> {
           ),
           CalendarCarousel<Event>(
             onDayPressed: (DateTime date, List<Event> events) {
-              this.setState(() => _currentDate = date);
+              setState(() {
+                _currentDate = date;
+              });
+              widget.onDateChange(date);
             },
             weekendTextStyle: TextStyle(
               color: Colors.red,
