@@ -3,6 +3,8 @@ import 'package:tamuhack2022/pages/dashboard.dart';
 import 'package:tamuhack2022/pages/loading_screen.dart';
 import 'package:tamuhack2022/pages/login.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tamuhack2022/pages/maps/map_screen.dart';
+import 'package:tamuhack2022/pages/pilot/pilot_screen.dart';
 
 void main() {
   runApp(App());
@@ -29,8 +31,9 @@ class _AppState extends State<App> {
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
+            theme: ThemeData(fontFamily: "Geometria"),
             home: Scaffold(
-              body: LoginScreen(),
+              body: MapScreen(),
             ),
           );
         }
