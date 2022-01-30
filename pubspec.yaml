@@ -67,7 +67,7 @@ flutter:
   assets:
     - assets/
     - assets/fonts/
-
+    - assets/json/tx_coords.json
   fonts:
     - family: Geometria
       fonts:
