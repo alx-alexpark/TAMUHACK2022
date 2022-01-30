@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tamuhack2022/pages/login.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tamuhack2022/pages/pilot_signup.dart';
 
 void main() {
-  runApp(const LoginScreen());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,8 +26,9 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        fontFamily: "Geometria-Medium",
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const PilotSignupScreen(),
     );
   }
 }
