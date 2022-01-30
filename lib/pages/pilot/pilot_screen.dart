@@ -18,24 +18,26 @@ class _PilotScreenState extends State<PilotScreen>
           Expanded(
             flex: 2,
             child: Container(
-                width: size.width,
-                height: size.height * 0.2,
-                child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: size.width * 0.1,
-                        ),
-                        Text(
-                          "Pilot Dashboard",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ))),
+              width: size.width,
+              height: size.height * 0.2,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: size.width * 0.1,
+                    ),
+                    Text(
+                      "Pilot Dashboard",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
           Expanded(
             flex: 7,
@@ -65,7 +67,7 @@ class _PilotScreenState extends State<PilotScreen>
                         ),
                       ],
                     ),
-                    Expanded(
+                    const Expanded(
                       child: TabBarView(
                         children: [ClaimedFlightsTab(), FindFlightsTab()],
                       ),
@@ -74,7 +76,7 @@ class _PilotScreenState extends State<PilotScreen>
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
