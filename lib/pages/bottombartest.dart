@@ -37,26 +37,21 @@ class _BottomBarTestState extends State<BottomBarTest> {
         },
         items: <BottomBarItem>[
           BottomBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-            activeColor: Colors.blue,
+            icon: Icon(Icons.bolt),
+            title: Text('Dashboard'),
+            activeColor: Colors.greenAccent.shade700,
+            darkActiveColor: Colors.greenAccent.shade400, // Optional
           ),
           BottomBarItem(
-            icon: Icon(Icons.favorite),
-            title: Text('Favorites'),
+            icon: Icon(Icons.map),
+            title: Text('Map'),
             activeColor: Colors.red,
             darkActiveColor: Colors.red.shade400, // Optional
           ),
           BottomBarItem(
             icon: Icon(Icons.person),
             title: Text('Account'),
-            activeColor: Colors.greenAccent.shade700,
-            darkActiveColor: Colors.greenAccent.shade400, // Optional
-          ),
-          BottomBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('Settings'),
-            activeColor: Colors.orange,
+            activeColor: Colors.blue,
           ),
         ],
       ),
