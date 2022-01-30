@@ -35,6 +35,7 @@ class DashboardScreen extends StatelessWidget {
                                   backgroundColor: Color(0xFF5F4AD8),
                                   primary: Colors.white,
                                   textStyle: const TextStyle(
+                                    fontFamily: "Geometria",
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -42,7 +43,7 @@ class DashboardScreen extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => PilotSignupScreen()));
                                 },
-                                child: const Text("Sign up to be a pilot"),
+                                child: const Text("Apply to be a pilot"),
                               ),
                             ],
                           )),
