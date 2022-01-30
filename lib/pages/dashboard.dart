@@ -69,24 +69,13 @@ class DashboardScreen extends StatelessWidget {
                     flex: 7,
                     child: Stack(
                       children: [
-                        Container(
-                          width: size.width,
-                          height: size.height * 0.8,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFF5F4AD8),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30),
-                            ),
-                          ),
-                        ),
                         Positioned(
                           bottom: 0,
                           child: Container(
                             width: size.width,
-                            height: size.height * 0.45,
+                            height: size.height * 0.6,
                             decoration: const BoxDecoration(
-                              color: Color(0xFFFFFFFF),
+                              color: Colors.white,
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(30),
                                 topRight: Radius.circular(30),
