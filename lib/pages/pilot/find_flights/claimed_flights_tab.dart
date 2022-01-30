@@ -13,7 +13,7 @@ class FindFlightsTab extends StatelessWidget {
         FirebaseFirestore.instance.collection("flights");
 
     return FutureBuilder(
-        future: flights.where("pilot", isNull: true).get(),
+        future: flights.where("pilot", isEqualTo: "").get(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return CircularProgressIndicator();
