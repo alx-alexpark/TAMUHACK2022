@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_bar/bottom_bar.dart';
+import 'package:tamuhack2022/pages/dashboard.dart';
 
 class BottomBarTest extends StatefulWidget {
   const BottomBarTest({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _BottomBarTestState extends State<BottomBarTest> {
       body: PageView(
         controller: _pageController,
         children: [
-          Container(color: Colors.blue),
+          DashboardScreen(),
           Container(color: Colors.red),
           Container(color: Colors.greenAccent.shade700),
           Container(color: Colors.orange),
