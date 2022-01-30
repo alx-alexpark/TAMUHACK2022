@@ -21,85 +21,141 @@ class FindFlightsTab extends StatelessWidget {
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
             ClaimedFlightsItem(
               arrival: "ABC",
               departure: "DEF",
               time: DateTime.now(),
+<<<<<<< Updated upstream
               onTap: () {},
+=======
+              ontap: () {},
+>>>>>>> Stashed changes
             ),
           ],
         ),
