@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_bar/bottom_bar.dart';
+import 'package:tamuhack2022/pages/account.dart';
 import 'package:tamuhack2022/pages/dashboard.dart';
 import 'package:tamuhack2022/pages/maps/map_screen.dart';
+import 'package:tamuhack2022/pages/pilot_signup.dart';
 import 'package:tamuhack2022/pages/pilotdashboard.dart';
 
 class BottomBarTest extends StatefulWidget {
@@ -23,8 +25,8 @@ class _BottomBarTestState extends State<BottomBarTest> {
         children: [
           DashboardScreen(),
           MapScreen(),
-          Container(color: Colors.greenAccent.shade700),
-          PilotDashboard()
+          //AccountScreen(),
+          false ? PilotDashboard() : PilotSignupScreen()
         ],
         onPageChanged: (index) {
           // Use a better state management solution
@@ -51,18 +53,16 @@ class _BottomBarTestState extends State<BottomBarTest> {
             activeColor: Colors.red,
             darkActiveColor: Colors.red.shade400,
           ),
-          BottomBarItem(
+          /*BottomBarItem(
             icon: Icon(Icons.person),
             title: Text('Account'),
             activeColor: Colors.blue,
-          ),
-          ...(true /* Is user pilot? */ ? [
-            BottomBarItem(
-              icon: Icon(Icons.flight),
-              title: Text('Pilot Dashboard'),
-              activeColor: Colors.red,
-            )
-          ]: [])
+          ),*/
+          BottomBarItem(
+            icon: Icon(Icons.flight),
+            title: Text('Pilot Dashboard'),
+            activeColor: Colors.red,
+          )
         ],
       ),
     );

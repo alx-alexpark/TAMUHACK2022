@@ -20,33 +20,7 @@ class DashboardScreen extends StatelessWidget {
                   flex: 3,
                   child: Column(
                     children: [
-                      Container(
-                          width: size.width,
-                          height: size.height * 0.17,
-                          color: Color(0xFFFFFF),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: size.width * 0.05,
-                              ),
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  padding: const EdgeInsets.all(10.0),
-                                  backgroundColor: Color(0xFF5F4AD8),
-                                  primary: Colors.white,
-                                  textStyle: const TextStyle(
-                                    fontFamily: "Geometria",
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => PilotSignupScreen()));
-                                },
-                                child: const Text("Apply to be a pilot"),
-                              ),
-                            ],
-                          )),
+                      SizedBox(height: 100,),
                       Row(
                         children: [
                           SizedBox(
