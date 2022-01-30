@@ -27,8 +27,8 @@ class PilotSignupScreen extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(50),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          shrinkWrap: true,
           children: [
             Row(
               children: [
