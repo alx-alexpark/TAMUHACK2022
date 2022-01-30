@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class PilotSignupScreen extends StatelessWidget {
@@ -7,6 +9,22 @@ class PilotSignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    User? user = FirebaseAuth.instance.currentUser;
+    Future<void> applyPilot() {
+      // Call the user's CollectionReference to add a new user
+      return users
+        .doc(user?.uid)
+        .set({
+          'pilot_info':{
+            'approved': true,
+            'license_image': "no"
+          }
+        }, SetOptions(merge: true))
+        .then((value) => print("Applied for pilot"))
+        .catchError((error) => print("Failed to apply pilot: $error"));
+    }
+
     return Scaffold(
       body: Padding( 
         padding: EdgeInsets.all(50),
@@ -64,7 +82,7 @@ class PilotSignupScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child: MaterialButton(
-                onPressed: () {},
+                onPressed: applyPilot,
                 child: Text(
                   "Submit",
                   style: TextStyle(

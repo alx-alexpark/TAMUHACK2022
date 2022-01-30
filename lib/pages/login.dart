@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,6 +30,23 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+      Future<void> addUser(String uid) {
+        // Call the user's CollectionReference to add a new user
+        return users
+          .doc(uid)
+          .set({
+            "name": "Unknown",
+            "pilot_info": {
+              "approved": false,
+              "license_image": "no"
+            }
+          })
+          .then((value) => print("User Added"))
+          .catchError((error) => print("Failed to add user: $error"));
+        }
+    
     return Scaffold(
       body: Container(
         child: Column(
@@ -43,7 +61,8 @@ class LoginScreen extends StatelessWidget {
                   if (user == null) {
                     print('User is currently signed out!');
                   } else {
-                    print('User is signed in!');
+                    print('User is signed in! UID: ' + user.uid);
+                    addUser(user.uid);
                   }
                 });
                 UserCredential userCredential =
