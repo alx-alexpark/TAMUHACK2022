@@ -7,16 +7,15 @@ import 'package:tamuhack2022/pages/dashboard.dart';
 import 'package:tamuhack2022/pages/maps/map_screen.dart';
 import 'package:tamuhack2022/pages/pilot/pilot_screen.dart';
 import 'package:tamuhack2022/pages/pilot_signup.dart';
-import 'package:tamuhack2022/pages/pilotdashboard.dart';
 
-class BottomBarTest extends StatefulWidget {
-  const BottomBarTest({Key? key}) : super(key: key);
+class BottomBarWidget extends StatefulWidget {
+  const BottomBarWidget({Key? key}) : super(key: key);
 
   @override
-  _BottomBarTestState createState() => _BottomBarTestState();
+  _BottomBarWidgetState createState() => _BottomBarWidgetState();
 }
 
-class _BottomBarTestState extends State<BottomBarTest> {
+class _BottomBarWidgetState extends State<BottomBarWidget> {
   int _currentPage = 0;
   final _pageController = PageController();
   final Future<DocumentSnapshot> _future = FirebaseFirestore.instance
@@ -46,7 +45,6 @@ class _BottomBarTestState extends State<BottomBarTest> {
               snapshot.data!.data() as Map<String, dynamic>;
           return Scaffold(
             body: PageView(
-              physics: NeverScrollableScrollPhysics(),
               controller: _pageController,
               children: [
                 DashboardScreen(),
