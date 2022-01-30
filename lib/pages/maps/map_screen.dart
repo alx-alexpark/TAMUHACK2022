@@ -114,7 +114,7 @@ class _MapScreenState extends State<MapScreen> {
                       .toSet(),
                   onMapCreated: _onMapCreated,
                   initialCameraPosition: const CameraPosition(
-                    target: LatLng(0.0, 0.0),
+                    target: LatLng(30.601389, -96.314445),
                   ),
                 );
               } else {
@@ -129,21 +129,21 @@ class _MapScreenState extends State<MapScreen> {
         ),
         panel: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 15,
               width: 15,
             ),
             Container(
               height: 7,
               width: 200,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFFd3d3d3),
                 borderRadius: BorderRadius.all(
                   Radius.circular(7),
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: size.height * 0.1,
               child: const Align(
                 alignment: Alignment.center,
