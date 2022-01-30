@@ -8,7 +8,7 @@ import 'package:tamuhack2022/pages/maps/map_screen.dart';
 import 'package:tamuhack2022/pages/pilot/pilot_screen.dart';
 import 'package:tamuhack2022/pages/pilot_signup.dart';
 
-final GlobalKey bottomBarKey = GlobalKey();
+GlobalKey bottomBarKey = GlobalKey();
 
 class BottomBarWidget extends StatefulWidget {
   const BottomBarWidget({Key? key}) : super(key: key);
@@ -47,6 +47,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
             snapshot.data!.data() as Map<String, dynamic>;
         return Scaffold(
           body: PageView(
+            physics: NeverScrollableScrollPhysics(),
             controller: _pageController,
             children: [
               DashboardScreen(),
