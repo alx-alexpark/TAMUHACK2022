@@ -9,92 +9,89 @@ class PilotSignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     User? user = FirebaseAuth.instance.currentUser;
     Future<void> applyPilot() {
       // Call the user's CollectionReference to add a new user
       return users
-        .doc(user?.uid)
-        .set({
-          'pilot_info':{
-            'approved': true,
-            'license_image': "no"
-          }
-        }, SetOptions(merge: true))
-        .then((value) => print("Applied for pilot"))
-        .catchError((error) => print("Failed to apply pilot: $error"));
+          .doc(user?.uid)
+          .set({
+            'pilot_info': {'approved': true, 'license_image': "no"}
+          }, SetOptions(merge: true))
+          .then((value) => print("Applied for pilot"))
+          .catchError((error) => print("Failed to apply pilot: $error"));
     }
 
     return Scaffold(
-      body: Padding( 
+      body: Padding(
         padding: EdgeInsets.all(50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                CircleAvatar(),
-                Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Text(
-                    "First Lastname",
-                    style: TextStyle(
-                      fontSize: 30,
-                    )
-                  )
-                )
-              ]
+            Row(children: [
+              CircleAvatar(),
+              Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: Text(
+                  "First Lastname",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+              )
+            ]),
+            SizedBox(
+              height: size.height * 0.08,
             ),
-            SizedBox(height: 80),
             Text(
               "Apply to be a pilot",
               style: TextStyle(
-                fontSize: 60,
+                fontSize: 45, fontWeight: FontWeight.w500,
                 // fontFamily: "Geometria-Medium"
               ),
             ),
-            SizedBox(height: 80),
+            SizedBox(height: size.height * 0.05),
             Text(
               "Upload your license",
               style: TextStyle(
-                fontSize: 20
-              )
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Container(
-                width: 275,
-                height: 200,
-                color: const Color(0xFFB49EF3),
-                child: MaterialButton(
-                  onPressed: (){
-
-                  },
-                  child: const Center(
-                    child: Icon(
-                      Icons.upload,
-                      size: 40
-                    )
+                borderRadius: BorderRadius.circular(15),
+                child: Container(
+                  width: 275,
+                  height: 200,
+                  color: const Color(0xFFB49EF3),
+                  child: MaterialButton(
+                    onPressed: () {},
+                    child: const Center(child: Icon(Icons.upload, size: 40)),
                   ),
-                ),
-              )
-            ),
+                )),
             Padding(
               padding: const EdgeInsets.only(top: 30),
-              child: MaterialButton(
-                onPressed: applyPilot,
-                child: Text(
-                  "Submit",
-                  style: TextStyle(
-                    fontSize: 30
-                  )
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.all(10.0),
+                  backgroundColor: Color(0xFF5F4AD8),
+                  primary: Colors.white,
+                  textStyle: TextStyle(
+                    fontFamily: "Geometria",
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-                color: Color(0xFF5F4AD8)
+                onPressed: applyPilot,
+                child: Text("Submit"),
               ),
             )
-          ]
-        )
-      )
+          ],
+        ),
+      ),
     );
   }
 }
