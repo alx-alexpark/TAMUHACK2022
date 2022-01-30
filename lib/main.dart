@@ -8,6 +8,7 @@ import 'package:tamuhack2022/pages/maps/map_screen.dart';
 import 'package:tamuhack2022/pages/pilot/pilot_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(App());
 }
 
@@ -15,7 +16,7 @@ class App extends StatefulWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Planer',
+      title: 'SharePlane',
       theme: ThemeData(
         // This is the theme of your application.
         //

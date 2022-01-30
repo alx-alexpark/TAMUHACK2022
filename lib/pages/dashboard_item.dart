@@ -1,21 +1,17 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'dart:core';
 import 'package:intl/intl.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
-class ClaimedFlightsItem extends StatelessWidget {
+class DashboardItem extends StatelessWidget {
   final String arrival;
   final String departure;
   final DateTime time;
-  final Function onTap;
 
-  ClaimedFlightsItem({
+  DashboardItem({
     required this.arrival,
     required this.departure,
     required this.time,
-    required this.onTap,
     Key? key,
   });
 
@@ -24,9 +20,6 @@ class ClaimedFlightsItem extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return GestureDetector(
-      onTap: () {
-        onTap();
-      },
       child: Container(
         width: size.width,
         height: 60,

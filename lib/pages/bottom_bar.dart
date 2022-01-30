@@ -45,6 +45,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
             snapshot.data!.data() as Map<String, dynamic>;
         return Scaffold(
           body: PageView(
+            physics: NeverScrollableScrollPhysics(),
             controller: _pageController,
             children: [
               DashboardScreen(),

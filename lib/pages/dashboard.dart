@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tamuhack2022/pages/pilot_signup.dart';
+import 'package:tamuhack2022/pages/dashboard_item.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -11,15 +11,20 @@ class DashboardScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     User? user = FirebaseAuth.instance.currentUser;
-    return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(user?.uid).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+    CollectionReference flights =
+        FirebaseFirestore.instance.collection("flights");
+
+    return FutureBuilder(
+      future: Future.wait<dynamic>(
+        [
+          users.doc(user?.uid).get(),
+          flights.where("passenger", isEqualTo: user!.uid).get(),
+        ],
+      ),
+      builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
-          Map<String, dynamic> data =
-              snapshot.data!.data() as Map<String, dynamic>;
-
+          dynamic userData = (snapshot!.data![0] as DocumentSnapshot).data();
           return Scaffold(
             body: Container(
               width: size.width,
@@ -49,7 +54,7 @@ class DashboardScreen extends StatelessWidget {
                             ),
                             SizedBox(width: 30),
                             Text(
-                              data['name'],
+                              userData['name'],
                               style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w500,
@@ -86,6 +91,38 @@ class DashboardScreen extends StatelessWidget {
                                 topLeft: Radius.circular(30),
                                 topRight: Radius.circular(30),
                               ),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: size.width * 0.9,
+                                  height: size.height * 0.1,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "Upcoming, Approved Flights",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: ListView(
+                                    children:
+                                        (snapshot!.data![1] as QuerySnapshot)
+                                            .docs
+                                            .map((e) {
+                                      return DashboardItem(
+                                          arrival: e['arrival'],
+                                          departure: e['departure'],
+                                          time: (e['time'] as Timestamp)
+                                              .toDate());
+                                    }).toList(),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
