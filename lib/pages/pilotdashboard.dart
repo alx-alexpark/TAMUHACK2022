@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_firestore/firebase_firestore.dart';
 
 class PilotDashboard extends StatefulWidget {
   const PilotDashboard({Key? key}) : super(key: key);

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tamuhack2022/pages/pilot_signup.dart';
+import 'package:tamuhack2022/pages/pilotdashboard.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -37,7 +39,9 @@ class DashboardScreen extends StatelessWidget {
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => PilotSignupScreen()));
+                                },
                                 child: const Text("Sign up to be a pilot"),
                               ),
                             ],
