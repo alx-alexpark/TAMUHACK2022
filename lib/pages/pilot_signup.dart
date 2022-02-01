@@ -1,8 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
 
 class PilotSignupScreen extends StatelessWidget {
   const PilotSignupScreen({Key? key}) : super(key: key);
@@ -10,6 +14,7 @@ class PilotSignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    PlatformFile? selected_file;
 
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     User? user = FirebaseAuth.instance.currentUser;
@@ -70,8 +75,19 @@ class PilotSignupScreen extends StatelessWidget {
                 height: 200,
                 color: const Color(0xFFB49EF3),
                 child: MaterialButton(
-                  onPressed: () {},
-                  child: const Center(child: Icon(Icons.upload, size: 40)),
+                  onPressed: () async {
+                    FilePickerResult? result =
+                        await FilePicker.platform.pickFiles(
+                      type: FileType.custom,
+                      allowedExtensions: ['jpg', 'png', 'webp'],
+                    );
+                    if (result != null) {
+                      selected_file = result.files.first;
+                    }
+                  },
+                  child: selected_file != null
+                      ? Image.memory(selected_file!.bytes!)
+                      : Center(child: Icon(Icons.upload, size: 40)),
                 ),
               ),
             ),
